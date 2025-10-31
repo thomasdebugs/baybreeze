@@ -1,0 +1,122 @@
+.tools-gateway-section {
+    padding: 10rem 5% 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.tools-gateway-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+}
+
+.tool-gateway-card {
+    background: var(--card-color);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tool-gateway-card:hover {
+    transform: translateY(-10px);
+}
+
+.tool-gateway-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.5);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    z-index: 0;
+}
+
+.tool-gateway-card:hover::before {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0.2;
+}
+
+.tool-gateway-card-content {
+    padding: 2.5rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.tool-gateway-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(117, 23, 204, 0.1), rgba(20, 234, 249, 0.1));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: background 0.3s ease;
+}
+
+.tool-gateway-icon i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.tool-gateway-card:hover .tool-gateway-icon i {
+    color: var(--accent-color);
+}
+
+.tool-gateway-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.tool-gateway-card p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.tool-gateway-link {
+    padding: 1.25rem 2rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--highlight-color);
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    z-index: 1;
+    background-color: rgba(20, 234, 249, 0.05);
+}
+
+.tool-gateway-card:hover .tool-gateway-link {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.tool-gateway-link i {
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+.tool-gateway-card:hover .tool-gateway-link i {
+    transform: translateX(5px);
+}
+
+#results h3 {
+    margin-bottom: 20px;
+}
