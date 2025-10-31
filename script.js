@@ -245,11 +245,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function injectFooterMeta() {
     const siteVersion = "1.0.1";
-    const footerBottom = document.querySelector('.footer-bottom');
+    const footerBottom = document.querySelector(".footer-bottom");
 
     if (footerBottom) {
-      const metaContainer = document.createElement('div');
-      metaContainer.className = 'footer-meta-container';
+      const metaContainer = document.createElement("div");
+      metaContainer.className = "footer-meta-container";
 
       const badgesHTML = `
         <div class="footer-badges">
@@ -261,19 +261,37 @@ document.addEventListener("DOMContentLoaded", () => {
           <div id="wcb" class="carbonbadge"></div>
         </div>
       `;
-      
+
       const versionHTML = `<p class="site-version">Version ${siteVersion}</p>`;
 
       metaContainer.innerHTML = badgesHTML + versionHTML;
       footerBottom.appendChild(metaContainer);
 
-      const carbonScript = document.createElement('script');
-      carbonScript.src = 'https://unpkg.com/website-carbon-badges@1.1.3/b.min.js';
+      const carbonScript = document.createElement("script");
+      carbonScript.src =
+        "https://unpkg.com/website-carbon-badges@1.1.3/b.min.js";
       carbonScript.defer = true;
       document.body.appendChild(carbonScript);
     }
   }
 
-  injectFooterMeta();
+  function injectGoogleAnalytics(measurementId) {
+    const gtagScript = document.createElement("script");
+    gtagScript.async = true;
+    gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+    document.head.appendChild(gtagScript);
 
+    const inlineGtagScript = document.createElement("script");
+    inlineGtagScript.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', '${measurementId}');
+    `;
+    document.head.appendChild(inlineGtagScript);
+  }
+
+  const measurementId = "G-Y9BW00PC8Y";
+  injectGoogleAnalytics(measurementId);
+  injectFooterMeta();
 });
