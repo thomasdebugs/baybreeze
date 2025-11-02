@@ -243,23 +243,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function initGoogleTranslate() {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    document.head.appendChild(script);
-    
-    window.googleTranslateElementInit = function() {
-      new google.translate.TranslateElement(
-        { 
-          pageLanguage: 'en',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        },
-        'google_translate_element'
-      );
-    };
-  }
-
   function injectFooterMeta() {
     const siteVersion = "1.0.1";
     const footerBottom = document.querySelector(".footer-bottom");
@@ -273,8 +256,8 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="netlify-badge">
             <a href="https://app.netlify.com/sites/baybreeze/deploys" target="_blank" rel="noopener noreferrer">
               <img 
-                src="https://api.netlify.com/api/v1/badges/44326680-4df7-4a75-bd54-2da14cd95e1c/deploy-status" 
-                alt="Netlify Deploy Status"
+                src="https://img.shields.io/netlify/44326680-4df7-4a75-bd54-2da14cd95e1c?style=flat-square" 
+                alt="Netlify Status"
                 loading="lazy"
               />
             </a>
@@ -315,5 +298,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const measurementId = "G-Y9BW00PC8Y";
   injectGoogleAnalytics(measurementId);
   injectFooterMeta();
-  initGoogleTranslate();
 });
