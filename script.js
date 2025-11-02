@@ -243,36 +243,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  function initGoogleTranslate() {
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    document.head.appendChild(script);
-    
-    window.googleTranslateElementInit = function() {
-      new google.translate.TranslateElement(
-        { 
-          pageLanguage: 'en',
-          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-        },
-        'google_translate_element'
-      );
-      
-      setTimeout(() => {
-        const translateElement = document.querySelector('#google_translate_element');
-        if (translateElement) {
-          const gadget = translateElement.querySelector('.goog-te-gadget-simple');
-          if (gadget) {
-            gadget.style.border = 'none';
-            gadget.style.backgroundColor = 'transparent';
-            gadget.style.padding = '0';
-            gadget.style.margin = '0';
-          }
-        }
-      }, 1000);
-    };
-  }
-
   function injectFooterMeta() {
     const siteVersion = "1.0.1";
     const footerBottom = document.querySelector(".footer-bottom");
@@ -328,5 +298,4 @@ document.addEventListener("DOMContentLoaded", () => {
   const measurementId = "G-Y9BW00PC8Y";
   injectGoogleAnalytics(measurementId);
   injectFooterMeta();
-  initGoogleTranslate();
 });
