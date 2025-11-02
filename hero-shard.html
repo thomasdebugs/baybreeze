@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bay Breeze Guild - Hero Shards Calculator</title>
+    <link rel="manifest" href="manifest.json">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tools.css">
+    <link rel="stylesheet" href="css/hero-shards.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="img/Bay Breeze.webp" alt="Bay Breeze Logo" class="logo-img">
+                <span class="logo-text">Bay Breeze</span>
+            </div>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li class="mega-menu-container">
+                    <a href="tools.html">
+                        Tools <i class="ri-arrow-down-s-line"></i>
+                    </a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-grid">
+                            <a href="speedup-calc.html">
+                                <i class="ri-timer-flash-line"></i> Speedups Calculator
+                            </a>
+                            <a href="weapon-calc.html">
+                                <i class="ri-vip-diamond-line"></i> Exclusive Gear Shards
+                            </a>
+                            <a href="hero-shard.html">
+                                <i class="ri-user-star-line"></i> Hero Shards Calculator
+                            </a>
+                            <a href="skill-books-calc.html">
+                                <i class="ri-book-3-line"></i> Skill Books Calculator
+                            </a>
+                            <a href="hero-awakening.html">
+                                <i class="ri-shield-star-line"></i> Hero Awakening Calculator
+                            </a>
+                            <a href="pet-level.html">
+                                <i class="ri-bear-smile-line"></i> Pet Level Calculator
+                            </a>
+                            <a href="decor-calc.html">
+                                <i class="ri-home-gear-line"></i> Decor Upgrading Calculator
+                            </a>
+                            <a href="castle-calc.html">
+                                <i class="ri-building-4-line"></i> Castle Upgrading Calculator
+                            </a>
+                            <a href="rune-calc.html">
+                                <i class="ri-magic-line"></i> Rune Upgrading Calculator
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="hr-report.html">Report to HR</a></li>
+
+                <div class="nav-close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </ul>
+            <a href="https://discord.gg/pXaNHAbz2E" class="cta-btn" target="_blank">
+                <span>Join Our Discord</span>
+            </a>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="tools-gateway-section">
+            <div class="section-header">
+                <h2>Hero Shards Calculator</h2>
+                <p>Calculate the total hero shards required to upgrade your heroes from one star level to another.</p>
+            </div>
+
+            <div class="calculators-grid">
+                <div id="legendary-calculator" class="shard-calculator">
+                    <h3>Legendary Hero</h3>
+                    <div class="input-group">
+                        <label for="legendary-current-level">Current Level</label>
+                        <select id="legendary-current-level" class="custom-select"></select>
+                    </div>
+                    <div class="input-group">
+                        <label for="legendary-target-level">Target Level</label>
+                        <select id="legendary-target-level" class="custom-select"></select>
+                    </div>
+                    <div class="calculator-actions">
+                        <button class="btn-primary"><span>Calculate</span></button>
+                    </div>
+                    <div class="results-section hidden">
+                        <h3>Level Breakdown</h3>
+                        <table class="level-breakdown">
+                            <thead>
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Shards</th>
+                                </tr>
+                            </thead>
+                            <tbody id="legendary-breakdown-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="mythic-calculator" class="shard-calculator">
+                    <h3>Mythic Hero</h3>
+                    <div class="input-group">
+                        <label for="mythic-current-level">Current Level</label>
+                        <select id="mythic-current-level" class="custom-select"></select>
+                    </div>
+                    <div class="input-group">
+                        <label for="mythic-target-level">Target Level</label>
+                        <select id="mythic-target-level" class="custom-select"></select>
+                    </div>
+                    <div class="calculator-actions">
+                        <button class="btn-primary"><span>Calculate</span></button>
+                    </div>
+                    <div class="results-section hidden">
+                        <h3>Level Breakdown</h3>
+                        <table class="level-breakdown">
+                            <thead>
+                                <tr>
+                                    <th>Level</th>
+                                    <th>Shards</th>
+                                </tr>
+                            </thead>
+                            <tbody id="mythic-breakdown-body">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>
+                    <img src="img/Bay Breeze.webp" alt="Bay Breeze Logo" class="footer-logo-img">
+                    Bay Breeze
+                </h3>
+                <p>Less grinding, more winning. Or at least that's the theory. No refunds.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="hr-report.html">Report to HR</a></li>
+                    <li><a href="https://discord.gg/pXaNHAbz2E" target="_blank">Join Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Tools</h4>
+                <ul>
+                    <li><a href="speedup-calc.html">Speedups Calculator</a></li>
+                    <li><a href="weapon-calc.html">Gear Calculator</a></li>
+                    <li><a href="hero-shard.html">Hero Shards Calculator</a></li>
+                    <li><a href="skill-books-calc.html">Skill Books Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Key Resources</h4>
+                <ul>
+                    <li><a href="resources.html#hero">Hero Mastery</a></li>
+                    <li><a href="resources.html#kingdom">Kingdom Foundations</a></li>
+                    <li><a href="resources.html#economy">Economic Dominance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Made by Rz even though they hate me 💖</p>
+            <p class="disclaimer">Disclaimer: Bay Breeze is an unofficial, fan-made resource. We are not affiliated with
+                Top Heroes or its developers. This is a hobby project created by players, for players.</p>
+        </div>
+    </footer>
+
+    <div id="share-popup" class="share-popup" aria-hidden="true">
+        <button id="share-selection-btn" title="Share Selection">
+            <i class="ri-share-forward-fill"></i> <span id="share-selection-text">Share</span>
+        </button>
+    </div>
+
+    	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/service-worker.js').then(registration => {
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, err => {
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
+	</script>
+    <script src="js/script.js"></script>
+    <script src="js/hero-shards.js"></script>
+</body>
+
+</html>

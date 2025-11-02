@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Money Spending Guide - Bay Breeze Guild</title>
+    <link rel="manifest" href="manifest.json">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="guides.css">
+    <style>
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .guide-table th,
+        .guide-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-table thead {
+            background-color: var(--background-color);
+        }
+
+        .guide-table th {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .guide-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .guide-table tbody tr:hover {
+            background-color: var(--background-color);
+        }
+
+        .guide-table td {
+            color: var(--text-secondary);
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../img/Bay Breeze.webp" alt="Bay Breeze Logo" class="logo-img">
+                <span class="logo-text">Bay Breeze</span>
+            </div>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li class="mega-menu-container">
+                    <a href="../tools.html">
+                        Tools <i class="ri-arrow-down-s-line"></i>
+                    </a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-grid">
+                            <a href="../speedup-calc.html"><i class="ri-timer-flash-line"></i> Speedups Calculator</a>
+                            <a href="../weapon-calc.html"><i class="ri-vip-diamond-line"></i> Exclusive Gear Shards</a>
+                            <a href="../hero-shard.html"><i class="ri-user-star-line"></i> Hero Shards Calculator</a>
+                            <a href="../skill-books-calc.html"><i class="ri-book-3-line"></i> Skill Books Calculator</a>
+                            <a href="../hero-awakening.html"><i class="ri-shield-star-line"></i> Hero Awakening
+                                Calculator</a>
+                            <a href="../pet-level.html"><i class="ri-bear-smile-line"></i> Pet Level Calculator</a>
+                            <a href="../decor-calc.html"><i class="ri-home-gear-line"></i> Decor Upgrading
+                                Calculator</a>
+                            <a href="../castle-calc.html"><i class="ri-building-4-line"></i> Castle Upgrading
+                                Calculator</a>
+                            <a href="../rune-calc.html"><i class="ri-magic-line"></i> Rune Upgrading Calculator</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../hr-report.html">Report to HR</a></li>
+                <div class="nav-close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </ul>
+            <a href="https://discord.gg/pXaNHAbz2E" class="cta-btn" target="blank">
+                <span>Join Our Discord</span>
+            </a>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="guide-page-container">
+            <a href="../resources.html#economy" class="back-to-resources">
+                <i class="ri-arrow-left-line"></i>
+                Back to Resources
+            </a>
+
+            <div class="guide-header">
+                <i class="ri-money-dollar-circle-line guide-header-icon economy"></i>
+                <h1>Smart Money Spending Guide</h1>
+                <div class="guide-meta">
+                    <div class="guide-meta-item">
+                        <i class="ri-time-line"></i>
+                        <span>9 min read</span>
+                    </div>
+                    <div class="guide-category-badge economy">Economic Dominance</div>
+                    <div class="guide-meta-item">
+                        <i class="ri-refresh-line"></i>
+                        <span>Updated: Oct 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-layout">
+                <div class="guide-toc">
+                    <h2><i class="ri-list-check"></i> Table of Contents</h2>
+                    <ul class="guide-toc-list">
+                        <li><a href="#core-priorities">Core Spending Priorities</a></li>
+                        <li><a href="#recurring-purchases">High-Value Recurring Purchases</a></li>
+                        <li><a href="#low-spenders">Low Spenders (< $20/month)</a></li>
+                        <li><a href="#mid-spenders">Mid Spenders (~$50/month)</a></li>
+                        <li><a href="#heavy-spenders">Heavy Spenders ($50+/month)</a></li>
+                        <li><a href="#avoid">Purchases to Avoid</a></li>
+                    </ul>
+                </div>
+
+                <div class="guide-content">
+                    <p>Knowing where to invest your money can make a huge difference. This guide provides a detailed breakdown of the best value purchases to accelerate your progress based on different budget levels.</p>
+
+                    <h2 id="core-priorities">Core Spending Priorities</h2>
+                    <p>For any spender, the highest value comes from permanent account upgrades. These should always be your first purchases.</p>
+                    <div class="hero-list">
+                        <div class="hero-items">
+                            <div class="hero-item"><i class="ri-number-1"></i><strong>1st & 2nd Construction Queue:</strong><span>A permanent boost that doubles your building speed. Absolutely essential.</span></div>
+                            <div class="hero-item"><i class="ri-number-2"></i><strong>2nd Research Queue:</strong><span>Permanently doubles your research speed, critical for long-term progression.</span></div>
+                            <div class="hero-item"><i class="ri-number-3"></i><strong>3rd Construction Queue:</strong><span>Another permanent build slot that further accelerates your development.</span></div>
+                        </div>
+                    </div>
+
+                    <h2 id="recurring-purchases">High-Value Recurring Purchases</h2>
+                    <p>These items offer the best ongoing value and are worth considering after securing permanent upgrades.</p>
+                     <ul>
+                        <li><strong>Monthly Pass:</strong> Highly valuable early on for the extra gathering queue, resources, and daily rewards. Its value diminishes slightly after a couple of months but remains a solid daily deal.</li>
+                        <li><strong>Hero Shards (End-Game):</strong> The Daily Special for $6 is the best option. Only buy shards for end-game heroes to maximize long-term impact.</li>
+                        <li><strong>Growth Fund:</strong> A one-time investment with a very high diamond return, perfect for stockpiling for events.</li>
+                        <li><strong>Permanent Privilege:</strong> A one-time investment with a good return on training, tech research, auto egg hatching and auto research queue.</li>
+                    </ul>
+
+                    <h2 id="low-spenders">Low Spenders (< $20/month)</h2>
+                    <p>Prioritize permanent unlocks to build a strong foundation for your account.</p>
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Item</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>2nd Construction Queue</td><td>One-time</td></tr>
+                            <tr><td>2</td><td>2nd Research Queue</td><td>One-time</td></tr>
+                            <tr><td>3</td><td>Monthly Pass (first 1-2 months)</td><td>$5</td></tr>
+                            <tr><td>4</td><td>5 Hero Shard Pack</td><td>$5</td></tr>
+                            <tr><td>5</td><td>Adventure Begins - First Tier</td><td>$2</td></tr>
+                            <tr><td>6</td><td>7-Day Login Pack</td><td>$1</td></tr>
+                            <tr><td>7</td><td>Growth Fund (if possible)</td><td>$20</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2 id="mid-spenders">Mid Spenders (~$50/month)</h2>
+                    <p>Acquire all core permanent upgrades and supplement with high-value monthly packs.</p>
+                    <table class="guide-table">
+                         <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Item</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>All low-spender options</td><td>-</td></tr>
+                            <tr><td>2</td><td>3rd Construction Queue</td><td>One-time</td></tr>
+                            <tr><td>3</td><td>Adventure Begins - all 3 tiers</td><td>$17</td></tr>
+                            <tr><td>4</td><td>Daily Special (Hero Shards) - 5x Packs</td><td>$30</td></tr>
+                            <tr><td>5</td><td>Growth Fund</td><td>$20</td></tr>
+                            <tr><td>6</td><td>Occasional Monthly Pass</td><td>$15</td></tr>
+                        </tbody>
+                    </table>
+
+                     <h2 id="heavy-spenders">Heavy Spenders ($50+/month)</h2>
+                    <p>Focus on gaining a competitive edge through battle passes, privilege packs, and cosmetic buffs.</p>
+                    <table class="guide-table">
+                         <thead>
+                            <tr>
+                                <th>Priority</th>
+                                <th>Item</th>
+                                <th>Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <tr><td>1</td><td>All above spending</td><td>-</td></tr>
+                           <tr><td>2</td><td>Adventurer's Battle Pass</td><td>$20</td></tr>
+                           <tr><td>3</td><td>Wheel Pass / Dice Privilege</td><td>$20 each</td></tr>
+                           <tr><td>4</td><td>Castle Skins</td><td>Premium</td></tr>
+                        </tbody>
+                    </table>
+
+                    <h2 id="avoid">Avoid These Purchases</h2>
+                    <div class="info-box important">
+                        <div class="info-box-header">
+                            <i class="ri-close-circle-line"></i>
+                            <h4>Low Value Investments</h4>
+                        </div>
+                        <ul>
+                            <li><strong>Instant Training Privilege:</strong> Potentially low impact for its cost. <em>However, if you have the permanent privilege, this will give you 500 extra soldiers per day vs the 200 without. It can be worth it as a one-time purchase, but is expensive at $49.99 USD.</em></li>
+                            <li><strong>Troll's Strike Pass / Similar Passes:</strong> Often provide inefficient rewards.</li>
+                            <li><strong>Overpriced Battle Passes:</strong> Avoid passes not tied to long-term growth or core progression.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button id="back-to-top-btn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>
+                    <img src="../img/Bay Breeze.webp" alt="Bay Breeze Logo" class="footer-logo-img">
+                    Bay Breeze
+                </h3>
+                <p>Less grinding, more winning. Or at least that's the theory. No refunds.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../tools.html">Tools</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="../hr-report.html">Report to HR</a></li>
+                    <li><a href="https://discord.gg/pXaNHAbz2E" target="_blank">Join Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Tools</h4>
+                <ul>
+                    <li><a href="../speedup-calc.html">Speedups Calculator</a></li>
+                    <li><a href="../weapon-calc.html">Gear Calculator</a></li>
+                    <li><a href="../hero-shard.html">Hero Shards Calculator</a></li>
+                    <li><a href="../skill-books-calc.html">Skill Books Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Key Resources</h4>
+                <ul>
+                    <li><a href="../resources.html#hero">Hero Mastery</a></li>
+                    <li><a href="../resources.html#kingdom">Kingdom Foundations</a></li>
+                    <li><a href="../resources.html#economy">Economic Dominance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Made by Rz even though they hate me 💖</p>
+            <p class="disclaimer">Disclaimer: Bay Breeze is an unofficial, fan-made resource. We are not affiliated with
+                Top Heroes or its developers. This is a hobby project created by players, for players.</p>
+        </div>
+    </footer>
+
+    	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/service-worker.js').then(registration => {
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, err => {
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
+	</script>
+
+    <script src="../js/script.js"></script>
+    <script>
+        const backToTopButton = document.getElementById('back-to-top-btn');
+
+        window.onscroll = function () {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        };
+
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>

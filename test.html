@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUnit Test Suite - Game Calculators</title>
+    <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.19.4.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+
+        .test-section h3 {
+            margin-top: 0;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script src="https://code.jquery.com/qunit/qunit-2.19.4.js"></script>
+    <script>
+        // ==================== CASTLE CALCULATOR TESTS ====================
+        QUnit.module('Castle Calculator', function () {
+            const castleRequirements = {
+                16: { wood_stone: 800000, req: "Guild 14, Training Ground 14" },
+                17: { wood_stone: 1000000, req: "Research Cottage 16, Hospital 15" },
+                18: { wood_stone: 1250000, req: "Guild 17, Training Ground 16" },
+                19: { wood_stone: 1500000, req: "Research Cottage 18, Hospital 18" },
+                20: { wood_stone: 1840000, req: "Guild 19, Training Ground 19" },
+                41: { wood: 99700000, rubies: 17100000, essence: 126, req: "Research Cottage 40, Hospital 40" },
+                42: { wood: 99700000, rubies: 17100000, essence: 126, req: "—" },
+                50: { wood: 166000000, rubies: 28500000, essence: 151, req: "—" },
+            };
+
+            function calculateCastleCosts(currentLevel, targetLevel) {
+                let totalWoodStone = 0, totalWood = 0, totalRubies = 0, totalEssence = 0;
+
+                for (let i = currentLevel + 1; i <= targetLevel; i++) {
+                    const cost = castleRequirements[i];
+                    if (cost) {
+                        if (cost.wood_stone) totalWoodStone += cost.wood_stone;
+                        if (cost.wood) totalWood += cost.wood;
+                        if (cost.rubies) totalRubies += cost.rubies;
+                        if (cost.essence) totalEssence += cost.essence;
+                    }
+                }
+
+                return { totalWoodStone, totalWood, totalRubies, totalEssence };
+            }
+
+            QUnit.test('Calculate from level 15 to 16', function (assert) {
+                const result = calculateCastleCosts(15, 16);
+                assert.equal(result.totalWoodStone, 800000, 'Wood/Stone should be 800,000');
+                assert.equal(result.totalWood, 0, 'Wood should be 0');
+            });
+
+            QUnit.test('Calculate from level 16 to 20', function (assert) {
+                const result = calculateCastleCosts(16, 20);
+                const expected = 1000000 + 1250000 + 1500000 + 1840000;
+                assert.equal(result.totalWoodStone, expected, 'Total Wood/Stone calculated correctly');
+            });
+
+            QUnit.test('Calculate high level with new resources (40 to 42)', function (assert) {
+                const result = calculateCastleCosts(40, 42);
+                assert.equal(result.totalWood, 99700000 * 2, 'Wood calculated for levels 41-42');
+                assert.equal(result.totalRubies, 17100000 * 2, 'Rubies calculated correctly');
+                assert.equal(result.totalEssence, 126 * 2, 'Essence calculated correctly');
+            });
+
+            QUnit.test('Invalid input: target <= current', function (assert) {
+                const result = calculateCastleCosts(20, 20);
+                assert.equal(result.totalWoodStone, 0, 'Should return 0 for invalid range');
+            });
+        });
+
+        // ==================== DECOR CALCULATOR TESTS ====================
+        QUnit.module('Decor Calculator', function () {
+            const legendaryPoints = 300;
+            const epicPoints = 75;
+            const rarePoints = 18;
+            const pointsGoal = 4000;
+
+            function calculateDecorPoints(legendary, epic, rare) {
+                return legendary * legendaryPoints + epic * epicPoints + rare * rarePoints;
+            }
+
+            QUnit.test('Calculate with all upgrade types', function (assert) {
+                const total = calculateDecorPoints(5, 10, 20);
+                assert.equal(total, 5 * 300 + 10 * 75 + 20 * 18, 'Points calculated correctly');
+            });
+
+            QUnit.test('Calculate with only legendary upgrades', function (assert) {
+                const total = calculateDecorPoints(10, 0, 0);
+                assert.equal(total, 3000, 'Legendary only: 10 * 300 = 3000');
+            });
+
+            QUnit.test('Check if goal is reached', function (assert) {
+                const total = calculateDecorPoints(14, 0, 0);
+                assert.ok(total >= pointsGoal, 'Goal reached with 14 legendary upgrades');
+            });
+
+            QUnit.test('Zero upgrades', function (assert) {
+                const total = calculateDecorPoints(0, 0, 0);
+                assert.equal(total, 0, 'Zero upgrades should give 0 points');
+            });
+        });
+
+        // ==================== HERO AWAKENING TESTS ====================
+        QUnit.module('Hero Awakening Calculator', function () {
+            const awakeningCosts = {
+                "1-0": { shards: 5, soulstones: 1 },
+                "1-1": { shards: 5, soulstones: 0 },
+                "1-2": { shards: 10, soulstones: 0 },
+                "2-0": { shards: 15, soulstones: 2 },
+                "2-1": { shards: 15, soulstones: 0 },
+                "3-0": { shards: 20, soulstones: 2 },
+            };
+
+            const allTiers = ["0", "1-0", "1-1", "1-2", "1-3", "1-4", "1-5", "2-0", "2-1", "2-2", "2-3", "2-4", "2-5", "3-0"];
+
+            function calculateAwakening(currentTier, targetTier) {
+                const currentIndex = allTiers.indexOf(currentTier);
+                const targetIndex = allTiers.indexOf(targetTier);
+                let totalShards = 0, totalSoulstones = 0;
+
+                for (let i = currentIndex + 1; i <= targetIndex; i++) {
+                    const cost = awakeningCosts[allTiers[i]];
+                    if (cost) {
+                        totalShards += cost.shards;
+                        totalSoulstones += cost.soulstones;
+                    }
+                }
+
+                return { totalShards, totalSoulstones };
+            }
+
+            QUnit.test('Awaken from 0 to 1-0', function (assert) {
+                const result = calculateAwakening("0", "1-0");
+                assert.equal(result.totalShards, 5, 'Should need 5 shards');
+                assert.equal(result.totalSoulstones, 1, 'Should need 1 soulstone');
+            });
+
+            QUnit.test('Awaken from 1-0 to 1-2', function (assert) {
+                const result = calculateAwakening("1-0", "1-2");
+                assert.equal(result.totalShards, 15, 'Should need 15 shards total');
+                assert.equal(result.totalSoulstones, 0, 'Should need 0 soulstones');
+            });
+
+            QUnit.test('Awaken across major tiers (1-2 to 2-1)', function (assert) {
+                const result = calculateAwakening("1-2", "2-1");
+                assert.ok(result.totalSoulstones > 0, 'Should require soulstones for tier jump');
+            });
+        });
+
+        // ==================== HERO SHARDS TESTS ====================
+        QUnit.module('Hero Shards Calculator', function () {
+            const legendaryShardData = [
+                { name: 'Gold ★', shards: 5 }, { name: 'Gold ★★', shards: 5 },
+                { name: 'Gold ★★★', shards: 10 }, { name: 'Red ★', shards: 30 }
+            ];
+
+            function calculateHeroShards(currentIndex, targetIndex, data) {
+                let totalShards = 0;
+                for (let i = currentIndex + 1; i <= targetIndex; i++) {
+                    totalShards += data[i].shards;
+                }
+                return totalShards;
+            }
+
+            QUnit.test('Calculate from None to Gold ★', function (assert) {
+                const total = calculateHeroShards(-1, 0, legendaryShardData);
+                assert.equal(total, 5, 'Should need 5 shards');
+            });
+
+            QUnit.test('Calculate multiple levels', function (assert) {
+                const total = calculateHeroShards(-1, 2, legendaryShardData);
+                assert.equal(total, 20, 'Should need 20 shards (5+5+10)');
+            });
+
+            QUnit.test('Same level should return 0', function (assert) {
+                const total = calculateHeroShards(1, 1, legendaryShardData);
+                assert.equal(total, 0, 'Same level should need 0 shards');
+            });
+        });
+
+        // ==================== PET LEVEL CALCULATOR TESTS ====================
+        QUnit.module('Pet Level Calculator', function () {
+            const levelCosts = [0, 100, 150, 200, 250, 300, 400, 500, 600, 700, 800];
+
+            function calculateTotalFood(startLevel, endLevel) {
+                let totalFood = 0;
+                for (let level = startLevel + 1; level <= endLevel; level++) {
+                    totalFood += levelCosts[level - 1];
+                }
+                return totalFood;
+            }
+
+            QUnit.test('Level 1 to 2', function (assert) {
+                const total = calculateTotalFood(1, 2);
+                assert.equal(total, 100, 'Should need 100 food');
+            });
+
+            QUnit.test('Level 1 to 5', function (assert) {
+                const total = calculateTotalFood(1, 5);
+                const expected = 100 + 150 + 200 + 250;
+                assert.equal(total, expected, 'Should sum correctly for multiple levels');
+            });
+
+            QUnit.test('Same level should return 0', function (assert) {
+                const total = calculateTotalFood(5, 5);
+                assert.equal(total, 0, 'Same level should need 0 food');
+            });
+        });
+
+        // ==================== RUNE CALCULATOR TESTS ====================
+        QUnit.module('Rune Calculator', function () {
+            const runeValues = {
+                1: 1, 2: 3, 3: 9, 4: 27, 5: 81,
+                6: 243, 7: 729, 8: 2187, 9: 6561, 10: 19683
+            };
+
+            QUnit.test('Level 1 rune value', function (assert) {
+                assert.equal(runeValues[1], 1, 'Level 1 = 1 rune');
+            });
+
+            QUnit.test('Level 5 rune value', function (assert) {
+                assert.equal(runeValues[5], 81, 'Level 5 = 81 level 1 runes');
+            });
+
+            QUnit.test('Level 10 rune value', function (assert) {
+                assert.equal(runeValues[10], 19683, 'Level 10 = 19683 level 1 runes');
+            });
+
+            QUnit.test('Powers of 3 pattern', function (assert) {
+                assert.equal(runeValues[3], Math.pow(3, 2), 'Level 3 = 3^2');
+                assert.equal(runeValues[5], Math.pow(3, 4), 'Level 5 = 3^4');
+            });
+        });
+
+        // ==================== SKILL BOOKS CALCULATOR TESTS ====================
+        QUnit.module('Skill Books Calculator', function () {
+            const skillBookRequirements = {
+                1: 0, 2: 100, 3: 300, 4: 700, 5: 1300,
+                6: 2100, 7: 3200, 8: 4600, 9: 6300, 10: 8300
+            };
+
+            function calculateSkillBooks(currentLevel, targetLevel) {
+                return skillBookRequirements[targetLevel] - skillBookRequirements[currentLevel];
+            }
+
+            QUnit.test('Level 1 to 2', function (assert) {
+                const total = calculateSkillBooks(1, 2);
+                assert.equal(total, 100, 'Should need 100 books');
+            });
+
+            QUnit.test('Level 5 to 10', function (assert) {
+                const total = calculateSkillBooks(5, 10);
+                assert.equal(total, 7000, 'Should need 7000 books (8300 - 1300)');
+            });
+
+            QUnit.test('Level 1 to 5', function (assert) {
+                const total = calculateSkillBooks(1, 5);
+                assert.equal(total, 1300, 'Should need 1300 books');
+            });
+        });
+
+        // ==================== SPEEDUPS CALCULATOR TESTS ====================
+        QUnit.module('Speedups Calculator', function () {
+            const speedupTypes = [
+                { duration: 1440, available: 2 },  // 24h
+                { duration: 480, available: 5 },   // 8h
+                { duration: 180, available: 10 },  // 3h
+                { duration: 60, available: 20 }    // 1h
+            ];
+
+            function calculateSpeedups(totalMinutes, speedups) {
+                let remainingTime = totalMinutes;
+                let speedupMinutesUsed = 0;
+
+                speedups.slice().sort((a, b) => b.duration - a.duration).forEach(speedup => {
+                    const needed = Math.floor(remainingTime / speedup.duration);
+                    const toUse = Math.min(speedup.available, needed);
+
+                    if (toUse > 0) {
+                        remainingTime -= toUse * speedup.duration;
+                        speedupMinutesUsed += toUse * speedup.duration;
+                    }
+                });
+
+                return { remainingTime, speedupMinutesUsed };
+            }
+
+            QUnit.test('Complete task with exact speedups', function (assert) {
+                const result = calculateSpeedups(1440, [{ duration: 1440, available: 1 }]);
+                assert.equal(result.remainingTime, 0, 'Should complete exactly');
+                assert.equal(result.speedupMinutesUsed, 1440, 'Should use 1440 minutes');
+            });
+
+            QUnit.test('Partial completion', function (assert) {
+                const result = calculateSpeedups(3000, [{ duration: 1440, available: 1 }]);
+                assert.equal(result.remainingTime, 1560, 'Should have 1560 minutes remaining');
+            });
+
+            QUnit.test('Multiple speedup types', function (assert) {
+                const result = calculateSpeedups(2000, speedupTypes);
+                assert.ok(result.speedupMinutesUsed > 0, 'Should use some speedups');
+                assert.ok(result.remainingTime < 2000, 'Should reduce remaining time');
+            });
+        });
+
+        // ==================== WEAPON CALCULATOR TESTS ====================
+        QUnit.module('Weapon Calculator', function () {
+            const shardRequirements = {
+                0: { shards: 0, cumulative: 0 },
+                1: { shards: 5, cumulative: 5 },
+                2: { shards: 10, cumulative: 15 },
+                3: { shards: 15, cumulative: 30 },
+                5: { shards: 25, cumulative: 75 },
+                10: { shards: 50, cumulative: 275 }
+            };
+
+            function calculateWeaponShards(currentLevel, targetLevel) {
+                return shardRequirements[targetLevel].cumulative -
+                    shardRequirements[currentLevel].cumulative;
+            }
+
+            QUnit.test('Level 0 to 1', function (assert) {
+                const total = calculateWeaponShards(0, 1);
+                assert.equal(total, 5, 'Should need 5 shards');
+            });
+
+            QUnit.test('Level 1 to 3', function (assert) {
+                const total = calculateWeaponShards(1, 3);
+                assert.equal(total, 25, 'Should need 25 shards (30 - 5)');
+            });
+
+            QUnit.test('Level 0 to 10', function (assert) {
+                const total = calculateWeaponShards(0, 10);
+                assert.equal(total, 275, 'Should need 275 shards total');
+            });
+
+            QUnit.test('Cumulative calculation integrity', function (assert) {
+                const directCalc = shardRequirements[3].cumulative;
+                const sumCalc = shardRequirements[1].shards + shardRequirements[2].shards + shardRequirements[3].shards;
+                assert.equal(directCalc, sumCalc, 'Cumulative should equal sum of individual shards');
+            });
+        });
+
+        // ==================== EDGE CASES & VALIDATION TESTS ====================
+        QUnit.module('Edge Cases & Validation', function () {
+            QUnit.test('Negative input handling', function (assert) {
+                const result = Math.max(0, -5);
+                assert.equal(result, 0, 'Negative values should default to 0');
+            });
+
+            QUnit.test('String to number conversion', function (assert) {
+                const value = parseInt("42") || 0;
+                assert.equal(value, 42, 'Should parse string to number');
+            });
+
+            QUnit.test('Empty string handling', function (assert) {
+                const value = parseInt("") || 0;
+                assert.equal(value, 0, 'Empty string should default to 0');
+            });
+
+            QUnit.test('Float to integer conversion', function (assert) {
+                const value = parseInt(42.7);
+                assert.equal(value, 42, 'Should truncate float to integer');
+            });
+
+            QUnit.test('Large number formatting', function (assert) {
+                const formatted = (1000000).toLocaleString();
+                assert.ok(formatted.includes(',') || formatted.includes('.'),
+                    'Should format with thousand separators');
+            });
+        });
+
+        // ==================== UTILITY FUNCTIONS TESTS ====================
+        QUnit.module('Utility Functions', function () {
+            function formatMinutesToDHM(totalMinutes) {
+                if (totalMinutes <= 0) return '0d 0h 0m';
+                const days = Math.floor(totalMinutes / 1440);
+                const hours = Math.floor((totalMinutes % 1440) / 60);
+                const minutes = totalMinutes % 60;
+                return `${days}d ${hours}h ${minutes}m`;
+            }
+
+            QUnit.test('Format 0 minutes', function (assert) {
+                assert.equal(formatMinutesToDHM(0), '0d 0h 0m', 'Zero should format correctly');
+            });
+
+            QUnit.test('Format 1 day', function (assert) {
+                assert.equal(formatMinutesToDHM(1440), '1d 0h 0m', 'One day should format correctly');
+            });
+
+            QUnit.test('Format complex time', function (assert) {
+                const result = formatMinutesToDHM(1565); // 1 day, 2 hours, 5 minutes
+                assert.equal(result, '1d 2h 5m', 'Should format correctly');
+            });
+
+            QUnit.test('Format hours only', function (assert) {
+                assert.equal(formatMinutesToDHM(125), '0d 2h 5m', 'Should handle hours and minutes');
+            });
+        });
+
+        // Run all tests
+        QUnit.start();
+    </script>
+</body>
+
+</html>

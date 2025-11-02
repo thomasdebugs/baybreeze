@@ -1,0 +1,185 @@
+.calculator-container {
+    background: var(--card-color);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.upgrade-calculator {
+    background: var(--card-color);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.custom-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    border-radius: 8px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2314eaf9' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(20, 234, 249, 0.2);
+}
+
+.custom-select option {
+    background: #1a1a1a;
+    color: var(--text-primary);
+}
+
+.results-section {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.results-section.hidden {
+    display: none;
+}
+
+.result-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--primary-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 0 auto 1rem;
+    max-width: none;
+}
+
+.result-card-label {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.result-card-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--highlight-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+
+.level-breakdown {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.level-breakdown th,
+.level-breakdown td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.level-breakdown th {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-align: center;
+}
+
+.level-breakdown tbody tr:hover {
+    background-color: rgba(20, 234, 249, 0.05);
+}
+
+.level-breakdown tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    position: relative;
+    overflow: hidden;
+    background: var(--primary-color);
+    color: var(--background-color);
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 1;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    gap: 0.5rem;
+    display: block;
+    margin: 2rem auto;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary span {
+    display: block;
+    position: relative;
+    z-index: 10;
+}
+
+.btn-primary:hover span {
+    color: var(--text-primary);
+}
+
+.btn-primary::before {
+    content: '';
+    position: absolute;
+    background: var(--primary-hover);
+    width: 120%;
+    height: 0;
+    padding-bottom: 120%;
+    top: -110%;
+    left: -10%;
+    border-radius: 50%;
+    transform: translate3d(0, 68%, 0) scale3d(0, 0, 0);
+    z-index: 0;
+    transition: transform 0.4s cubic-bezier(0.1, 0, 0.3, 1);
+}
+
+.btn-primary:hover::before {
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}

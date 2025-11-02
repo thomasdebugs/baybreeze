@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Bay Breeze Guild - Resources</title>
+    <link rel="manifest" href="manifest.json">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/tools.css">
+    <link rel="stylesheet" href="css/resources.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="img/Bay Breeze.webp" alt="Bay Breeze Logo" class="logo-img">
+                <span class="logo-text">Bay Breeze</span>
+            </div>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li class="mega-menu-container">
+                    <a href="tools.html">
+                        Tools <i class="ri-arrow-down-s-line"></i>
+                    </a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-grid">
+                            <a href="speedup-calc.html">
+                                <i class="ri-timer-flash-line"></i> Speedups Calculator
+                            </a>
+                            <a href="weapon-calc.html">
+                                <i class="ri-vip-diamond-line"></i> Exclusive Gear Shards
+                            </a>
+                            <a href="hero-shard.html">
+                                <i class="ri-user-star-line"></i> Hero Shards Calculator
+                            </a>
+                            <a href="skill-books-calc.html">
+                                <i class="ri-book-3-line"></i> Skill Books Calculator
+                            </a>
+                            <a href="hero-awakening.html">
+                                <i class="ri-shield-star-line"></i> Hero Awakening Calculator
+                            </a>
+                            <a href="pet-level.html">
+                                <i class="ri-bear-smile-line"></i> Pet Level Calculator
+                            </a>
+                            <a href="decor-calc.html">
+                                <i class="ri-home-gear-line"></i> Decor Upgrading Calculator
+                            </a>
+                            <a href="castle-calc.html">
+                                <i class="ri-building-4-line"></i> Castle Upgrading Calculator
+                            </a>
+                            <a href="rune-calc.html">
+                                <i class="ri-magic-line"></i> Rune Upgrading Calculator
+                            </a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="hr-report.html">Report to HR</a></li>
+
+                <div class="nav-close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </ul>
+            <a href="https://discord.gg/pXaNHAbz2E" class="cta-btn" target="_blank">
+                <span>Join Our Discord</span>
+            </a>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="tools-gateway-section">
+            <div class="section-header">
+                <h2>Strategies and Resources</h2>
+                <p>Your ultimate guide library. Search, filter, and sort to find exactly what you need.</p>
+            </div>
+
+            <div class="guides-library-container">
+                <div class="guide-controls">
+                    <div class="search-wrapper">
+                        <i class="ri-search-line"></i>
+                        <input type="text" id="search-bar" placeholder="Search for a guide...">
+                    </div>
+                    <div class="filter-wrapper">
+                        <label for="filter-guides">Category:</label>
+                        <select id="filter-guides" class="guide-select">
+                            <option value="all">All Categories</option>
+                            <option value="hero">Hero Mastery</option>
+                            <option value="kingdom">Kingdom Foundations</option>
+                            <option value="economy">Economic Dominance</option>
+                        </select>
+                    </div>
+                    <div class="sort-wrapper">
+                        <label for="sort-guides">Sort by:</label>
+                        <select id="sort-guides" class="guide-select">
+                            <option value="alpha-asc">Alphabetical (A-Z)</option>
+                            <option value="alpha-desc">Alphabetical (Z-A)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="guide-grid" id="guide-grid">
+                    <!-- Hero Mastery Guides -->
+                    <a href="guides/hero-overview.html" class="guide-card hero" data-category="hero"
+                        data-title="Hero Overview">
+                        <i class="ri-shield-user-line"></i>
+                        <h4>Hero Overview</h4>
+                        <p>Get a complete introduction to hero mechanics and roles.</p>
+                        <div class="category-tag hero">Hero Mastery</div>
+                    </a>
+                    <a href="guides/hero-gear.html" class="guide-card hero" data-category="hero"
+                        data-title="Hero Gear Armor Guide">
+                        <i class="ri-shield-user-line"></i>
+                        <h4>Hero Gear/Armor Guide</h4>
+                        <p>Learn how to craft, upgrade, and equip the best gear.</p>
+                        <div class="category-tag hero">Hero Mastery</div>
+                    </a>
+                    <a href="guides/troop-morale.html" class="guide-card hero" data-category="hero"
+                        data-title="Troop Soldier Morale">
+                        <i class="ri-shield-user-line"></i>
+                        <h4>Troop/Soldier Morale</h4>
+                        <p>Understand how morale impacts your army's performance.</p>
+                        <div class="category-tag hero">Hero Mastery</div>
+                    </a>
+                    <a href="guides/hero-relics.html" class="guide-card hero" data-category="hero"
+                        data-title="Hero Relics Guide">
+                        <i class="ri-shield-user-line"></i>
+                        <h4>Hero Relics Guide</h4>
+                        <p>Unlock powerful passive buffs with the relic system.</p>
+                        <div class="category-tag hero">Hero Mastery</div>
+                    </a>
+                    <a href="guides/hero-pets.html" class="guide-card hero" data-category="hero"
+                        data-title="Hero Pet Guide">
+                        <i class="ri-shield-user-line"></i>
+                        <h4>Hero Pet Guide</h4>
+                        <p>Master the pet system to give your heroes a powerful edge.</p>
+                        <div class="category-tag hero">Hero Mastery</div>
+                    </a>
+                    <a href="guides/lord-traits.html" class="guide-card hero" data-category="hero"
+                        data-title="Lord Traits Guide">
+                        <i class="ri-shield-user-line"></i>
+                        <h4>Lord Traits Guide</h4>
+                        <p>Optimize your Lord's traits for maximum combat and eco boosts.</p>
+                        <div class="category-tag hero">Hero Mastery</div>
+                    </a>
+
+                    <!-- Kingdom Foundations Guides -->
+                    <a href="guides/castle-upgrades.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Castle Upgrades">
+                        <i class="ri-community-line"></i>
+                        <h4>Castle Upgrades</h4>
+                        <p>An in-depth look at castle requirements and benefits.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/castle-skins.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Castle Skin Guide">
+                        <i class="ri-community-line"></i>
+                        <h4>Castle Skin Guide</h4>
+                        <p>A look at all available castle skins and the stats they provide.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/castle-brilliance.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Castle Brilliance Guide">
+                        <i class="ri-community-line"></i>
+                        <h4>Castle Brilliance Guide</h4>
+                        <p>Master the end-game brilliance system for massive power.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/building-priorities.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Building Priorities">
+                        <i class="ri-community-line"></i>
+                        <h4>Building Priorities</h4>
+                        <p>What to build first to maximize your growth and efficiency.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/light-dark-towers.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Light Dark Towers">
+                        <i class="ri-community-line"></i>
+                        <h4>Light/Dark Towers</h4>
+                        <p>Strategies for conquering the towers and earning rewards.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/research-guide.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Research Guide">
+                        <i class="ri-community-line"></i>
+                        <h4>Research Guide</h4>
+                        <p>Unlock powerful boosts by prioritizing the right research.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/villager-guide.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Villager Guide">
+                        <i class="ri-community-line"></i>
+                        <h4>Villager Guide</h4>
+                        <p>Efficiently manage villagers to speed up your progress.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/carriage-caravan.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Carriage Caravan Tips">
+                        <i class="ri-community-line"></i>
+                        <h4>Carriage Caravan Tips</h4>
+                        <p>Tips and tricks for maximizing your caravan rewards.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/adventure-mode.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Adventure Mode">
+                        <i class="ri-community-line"></i>
+                        <h4>Adventure Mode</h4>
+                        <p>A complete walkthrough of the adventure mode stages.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/season-guides.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Season 1 2 Guides">
+                        <i class="ri-community-line"></i>
+                        <h4>Season 1 & 2 Guides</h4>
+                        <p>Strategies and goals for the early game seasons.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/game-events.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="Game Events">
+                        <i class="ri-community-line"></i>
+                        <h4>Game Events</h4>
+                        <p>An overview of recurring events and how to excel in them.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+                    <a href="guides/king-server-titles.html" class="guide-card kingdom" data-category="kingdom"
+                        data-title="King Server Titles">
+                        <i class="ri-community-line"></i>
+                        <h4>King & Server Titles</h4>
+                        <p>Explaining the buffs and benefits of holding server titles.</p>
+                        <div class="category-tag kingdom">Kingdom Foundations</div>
+                    </a>
+
+                    <!-- Economic Dominance Guides -->
+                    <a href="guides/f2p-tips.html" class="guide-card economy" data-category="economy"
+                        data-title="F2P Tips">
+                        <i class="ri-line-chart-line"></i>
+                        <h4>F2P Tips</h4>
+                        <p>Compete at the highest level without spending a dime.</p>
+                        <div class="category-tag economy">Economic Dominance</div>
+                    </a>
+                    <a href="guides/spending-diamonds.html" class="guide-card economy" data-category="economy"
+                        data-title="Spending Diamonds">
+                        <i class="ri-line-chart-line"></i>
+                        <h4>Spending Diamonds</h4>
+                        <p>Maximize the value you get from every precious diamond.</p>
+                        <div class="category-tag economy">Economic Dominance</div>
+                    </a>
+                    <a href="guides/spending-money.html" class="guide-card economy" data-category="economy"
+                        data-title="Spending Real Money">
+                        <i class="ri-line-chart-line"></i>
+                        <h4>Spending Real Money</h4>
+                        <p>A guide to the best value packs for smart spenders.</p>
+                        <div class="category-tag economy">Economic Dominance</div>
+                    </a>
+                    <a href="guides/guild-shop.html" class="guide-card economy" data-category="economy"
+                        data-title="Guild Shop Priorities">
+                        <i class="ri-line-chart-line"></i>
+                        <h4>Guild Shop Priorities</h4>
+                        <p>Know the must-buy items from the guild shop every week.</p>
+                        <div class="category-tag economy">Economic Dominance</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>
+                    <img src="img/Bay Breeze.webp" alt="Bay Breeze Logo" class="footer-logo-img">
+                    Bay Breeze
+                </h3>
+                <p>Less grinding, more winning. Or at least that's the theory. No refunds.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="hr-report.html">Report to HR</a></li>
+                    <li><a href="https://discord.gg/pXaNHAbz2E" target="_blank">Join Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Tools</h4>
+                <ul>
+                    <li><a href="speedup-calc.html">Speedups Calculator</a></li>
+                    <li><a href="weapon-calc.html">Gear Calculator</a></li>
+                    <li><a href="hero-shard.html">Hero Shards Calculator</a></li>
+                    <li><a href="skill-books-calc.html">Skill Books Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Key Resources</h4>
+                <ul>
+                    <li><a href="resources.html#hero">Hero Mastery</a></li>
+                    <li><a href="resources.html#kingdom">Kingdom Foundations</a></li>
+                    <li><a href="resources.html#economy">Economic Dominance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Made by Rz even though they hate me 💖</p>
+            <p class="disclaimer">Disclaimer: Bay Breeze is an unofficial, fan-made resource. We are not affiliated with
+                Top Heroes or its developers. This is a hobby project created by players, for players.</p>
+        </div>
+    </footer>
+
+    	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/service-worker.js').then(registration => {
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, err => {
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
+	</script>
+    <script src="js/script.js"></script>
+    <script src="js/resources.js"></script>
+</body>
+
+</html>

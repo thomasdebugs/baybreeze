@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>The Ultimate Guide to Pets - Bay Breeze Guild</title>
+    <link rel="manifest" href="manifest.json">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="guides.css">
+    <style>
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.5rem 0;
+            background-color: var(--card-color);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .guide-table th,
+        .guide-table td {
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            vertical-align: middle;
+        }
+        
+        .guide-table thead {
+            background-color: var(--background-color);
+        }
+
+        .guide-table th {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .guide-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .guide-table tbody tr:hover {
+            background-color: var(--background-color);
+        }
+
+        .guide-table td {
+            color: var(--text-secondary);
+        }
+
+        .guide-table .pet-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../img/Bay Breeze.webp" alt="Bay Breeze Logo" class="logo-img">
+                <span class="logo-text">Bay Breeze</span>
+            </div>
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li class="mega-menu-container">
+                    <a href="../tools.html">
+                        Tools <i class="ri-arrow-down-s-line"></i>
+                    </a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-grid">
+                            <a href="../speedup-calc.html"><i class="ri-timer-flash-line"></i> Speedups Calculator</a>
+                            <a href="../weapon-calc.html"><i class="ri-vip-diamond-line"></i> Exclusive Gear Shards</a>
+                            <a href="../hero-shard.html"><i class="ri-user-star-line"></i> Hero Shards Calculator</a>
+                            <a href="../skill-books-calc.html"><i class="ri-book-3-line"></i> Skill Books Calculator</a>
+                            <a href="../hero-awakening.html"><i class="ri-shield-star-line"></i> Hero Awakening Calculator</a>
+                            <a href="../pet-level.html"><i class="ri-bear-smile-line"></i> Pet Level Calculator</a>
+                            <a href="../decor-calc.html"><i class="ri-home-gear-line"></i> Decor Upgrading Calculator</a>
+                            <a href="../castle-calc.html"><i class="ri-building-4-line"></i> Castle Upgrading Calculator</a>
+                            <a href="../rune-calc.html"><i class="ri-magic-line"></i> Rune Upgrading Calculator</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="../resources.html">Resources</a></li>
+                <li><a href="../hr-report.html">Report to HR</a></li>
+                <div class="nav-close" id="nav-close">
+                    <i class="ri-close-line"></i>
+                </div>
+            </ul>
+            <a href="https://discord.gg/pXaNHAbz2E" class="cta-btn" target="blank">
+                <span>Join Our Discord</span>
+            </a>
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="guide-page-container">
+            <a href="../resources.html#hero" class="back-to-resources">
+                <i class="ri-arrow-left-line"></i>
+                Back to Resources
+            </a>
+
+            <div class="guide-header">
+                <i class="ri-bear-smile-line guide-header-icon heroes"></i>
+                <h1>The Ultimate Guide to Pets</h1>
+                <div class="guide-meta">
+                    <div class="guide-meta-item">
+                        <i class="ri-time-line"></i>
+                        <span>7 min read</span>
+                    </div>
+                    <div class="guide-category-badge heroes">Hero Mastery</div>
+                    <div class="guide-meta-item">
+                        <i class="ri-refresh-line"></i>
+                        <span>Updated: Oct 2025</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="guide-layout">
+                <div class="guide-toc">
+                    <h2><i class="ri-list-check"></i> Table of Contents</h2>
+                    <ul class="guide-toc-list">
+                        <li><a href="#pet-buffs">Understanding Pet Buffs</a></li>
+                        <li><a href="#pet-list">A Complete List of Pets</a></li>
+                        <li><a href="#pet-progression">Strategic Progression</a></li>
+                        <li><a href="#f2p-considerations">Considerations for F2P</a></li>
+                    </ul>
+                </div>
+
+                <div class="guide-content">
+                    <p>This guide is focused on the pet system, which will be available once your server starts Season 1. We'll help you understand pet buffs, choose the right pet for your hero lineup, and maximize your team's power.</p>
+
+                    <h2 id="pet-buffs"><i class="ri-bar-chart-2-line" style="color: var(--primary-color);"></i>1. Understanding Pet Buffs: Promotion vs. Skill</h2>
+                    <p>Pets offer two types of benefits, but the passive promotion bonus is by far the most impactful for long-term power growth.</p>
+                    
+                    <h3>Passive Promotion Bonus (Most Important!)</h3>
+                    <p>This provides a permanent, account-wide increase to your heroes' Attack and HP. This bonus is <strong>ALWAYS ACTIVE</strong> for the specified heroes, even if the pet is not equipped to a queue.</p>
+                    
+                    <h3>Active Skills</h3>
+                    <p>These are special abilities used in battle, but only by an equipped pet. They are useful for supporting a specific lineup but are secondary to the massive passive buffs gained from promotion.</p>
+
+                    <div class="info-box tip">
+                        <div class="info-box-header">
+                            <i class="ri-alert-line"></i>
+                            <h4>Key Insight: Faction-Specific Buffs are 3x Stronger</h4>
+                        </div>
+                        <p>Pets provide either a universal buff to all heroes or a much more potent, faction-specific buff. These faction bonuses are roughly <strong>three times stronger</strong>, making them the undisputed top priority for your main hero queue.</p>
+                    </div>
+
+                    <h2 id="pet-list"><i class="ri-ball-pen-line" style="color: var(--primary-color);"></i>2. A Complete List of Pets</h2>
+                     <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Buff Type</th>
+                                <th>Pet Name</th>
+                                <th>Faction</th>
+                                <th>How to Get</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Faction-Specific</td>
+                                <td class="pet-name">Cactini</td>
+                                <td>🟩 Nature</td>
+                                <td>🐣 From Eggs</td>
+                            </tr>
+                             <tr>
+                                <td>Faction-Specific</td>
+                                <td class="pet-name">Eggy</td>
+                                <td>🟦 League</td>
+                                <td>🐣 From Eggs</td>
+                            </tr>
+                            <tr>
+                                <td>Faction-Specific</td>
+                                <td class="pet-name">Flickerkit</td>
+                                <td>🟥 Horde</td>
+                                <td>💰 Pack-Only*</td>
+                            </tr>
+                             <tr>
+                                <td>All-Hero</td>
+                                <td class="pet-name">Spoutfang (Snake)</td>
+                                <td>🟩 Nature</td>
+                                <td>💰 Pack-Only</td>
+                            </tr>
+                             <tr>
+                                <td>All-Hero</td>
+                                <td class="pet-name">Cubbly (Bear)</td>
+                                <td>🟩 Nature</td>
+                                <td>🐣 From Eggs</td>
+                            </tr>
+                            <tr>
+                                <td>All-Hero</td>
+                                <td class="pet-name">Snowpal</td>
+                                <td>🟩 Nature</td>
+                                <td>💰 Pack-Only</td>
+                            </tr>
+                            <tr>
+                                <td>All-Hero</td>
+                                <td class="pet-name">Zappy (Sparrow)</td>
+                                <td>🟦 League</td>
+                                <td>🐣 From Eggs</td>
+                            </tr>
+                            <tr>
+                                <td>All-Hero</td>
+                                <td class="pet-name">Howli (Wolf)</td>
+                                <td>🟥 Horde</td>
+                                <td>🐣 From Eggs</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);"><em>*Note: Flickerkit can sometimes be obtained through special events.</em></p>
+
+
+                    <h2 id="pet-progression"><i class="ri-line-chart-line" style="color: var(--primary-color);"></i>3. Pet Leveling, Promotion, and Strategic Progression</h2>
+                    <p>Pet food is a limited resource. A well-planned progression is crucial for maximizing your power and avoiding wasted resources.</p>
+                    
+                    <div class="hero-list">
+                        <div class="hero-items">
+                            <div class="hero-item">
+                                <i class="ri-trophy-line"></i>
+                                <div>
+                                    <strong>First Pet: Your Main Faction</strong>
+                                    <p style="margin: 0.5rem 0 0;">Your absolute first priority is to level up the faction-specific buff pet that matches your strongest hero queue (Q1). This gives the largest and most immediate power boost.</p>
+                                </div>
+                            </div>
+                            <div class="hero-item">
+                                <i class="ri-star-line"></i>
+                                <div>
+                                    <strong>Second Pet: All-Hero Buff for Q2</strong>
+                                    <p style="margin: 0.5rem 0 0;">Next, focus on an all-hero buff pet that matches the faction of your second strongest queue (Q2). This provides a permanent bonus to all heroes while its active skills support your Q2 lineup.</p>
+                                </div>
+                            </div>
+                            <div class="hero-item">
+                                <i class="ri-apps-2-line"></i>
+                                <div>
+                                    <strong>Subsequent Pets: Broaden Your Buffs</strong>
+                                    <p style="margin: 0.5rem 0 0;">Once your first two pets are well-progressed, you can begin leveling other all-hero buff pets to provide broad, incremental boosts to all of your teams.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <h2 id="f2p-considerations"><i class="ri-user-unfollow-line" style="color: var(--primary-color);"></i>4. Special Considerations for F2P Players</h2>
+                    <p>Free-to-Play players have a more limited selection of pets. Knowing which pets are unobtainable is crucial for forming an efficient and realistic strategy.</p>
+                    
+                    <div class="info-box important">
+                        <div class="info-box-header">
+                            <i class="ri-lock-line"></i>
+                            <h4>Unobtainable for F2P</h4>
+                        </div>
+                        <p>The following pets are generally only available through paid packs and should not be part of a standard F2P progression plan:</p>
+                        <ul>
+                            <li><strong>Snowpal</strong></li>
+                            <li><strong>Spoutfang</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-box warning">
+                        <div class="info-box-header">
+                            <i class="ri-calendar-event-line"></i>
+                            <h4>Special Availability</h4>
+                        </div>
+                        <p><strong>Flickerkit</strong>, while generally a pack-only pet, is occasionally available through special events. F2P players who main the Horde faction should save their resources specifically for these rare opportunities.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <button id="back-to-top-btn" title="Go to top"><i class="ri-arrow-up-s-line"></i></button>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>
+                    <img src="../img/Bay Breeze.webp" alt="Bay Breeze Logo" class="footer-logo-img">
+                    Bay Breeze
+                </h3>
+                <p>Less grinding, more winning. Or at least that's the theory. No refunds.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../tools.html">Tools</a></li>
+                    <li><a href="../resources.html">Resources</a></li>
+                    <li><a href="../hr-report.html">Report to HR</a></li>
+                    <li><a href="https://discord.gg/pXaNHAbz2E" target="_blank">Join Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Tools</h4>
+                <ul>
+                    <li><a href="../speedup-calc.html">Speedups Calculator</a></li>
+                    <li><a href="../weapon-calc.html">Gear Calculator</a></li>
+                    <li><a href="../hero-shard.html">Hero Shards Calculator</a></li>
+                    <li><a href="../skill-books-calc.html">Skill Books Calculator</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Key Resources</h4>
+                <ul>
+                    <li><a href="../resources.html#hero">Hero Mastery</a></li>
+                    <li><a href="../resources.html#kingdom">Kingdom Foundations</a></li>
+                    <li><a href="../resources.html#economy">Economic Dominance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Made by Rz even though they hate me 💖</p>
+            <p class="disclaimer">Disclaimer: Bay Breeze is an unofficial, fan-made resource. We are not affiliated with
+                Top Heroes or its developers. This is a hobby project created by players, for players.</p>
+        </div>
+    </footer>
+
+    	<script>
+		if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('/service-worker.js').then(registration => {
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, err => {
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
+		}
+	</script>
+
+    <script src="../js/script.js"></script>
+    <script>
+        const backToTopButton = document.getElementById('back-to-top-btn');
+
+        window.onscroll = function () {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        };
+
+        backToTopButton.addEventListener('click', function () {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>
