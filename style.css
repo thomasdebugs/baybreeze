@@ -1196,23 +1196,18 @@ footer {
     margin: 0;
 }
 
-.goog-te-banner-frame.skiptranslate {
+.goog-te-banner-frame.skiptranslate,
+body > .skiptranslate {
     display: none !important;
-}
+} 
 body {
     top: 0px !important; 
 }
-body > .skiptranslate {
-    display: none !important;
-}
 
-#google_translate_element {
-    background: var(--card-color);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    margin-right: 1.5rem;
+.nav-links #google_translate_element {
+    padding: 0;
+    margin: 0;
+    align-self: center;
 }
 
 #google_translate_element .goog-te-gadget-simple {
@@ -1220,12 +1215,18 @@ body > .skiptranslate {
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;
-    font-size: 0 !important;
+    display: flex !important;
+    align-items: center;
 }
 
 #google_translate_element .goog-logo-link,
 #google_translate_element .goog-te-gadget-icon {
     display: none !important;
+}
+
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value {
+    display: inline-flex;
+    align-items: center;
 }
 
 #google_translate_element .goog-te-gadget-simple .goog-te-menu-value span {
@@ -1234,13 +1235,16 @@ body > .skiptranslate {
     font-weight: 500 !important;
     font-family: 'Space Grotesk', sans-serif !important;
     text-decoration: none !important;
-    padding-right: 1.5rem !important; 
+    padding-right: 1.5rem !important;
     position: relative;
-    top: 2px;
+}
+
+#google_translate_element .goog-te-gadget-simple .goog-te-menu-value img {
+    display: none !important;
 }
 
 #google_translate_element .goog-te-gadget-simple .goog-te-menu-value::after {
-    content: '\EA66'; 
+    content: '\EA66';
     font-family: 'remixicon' !important;
     font-size: 1.2rem;
     color: var(--text-secondary);
@@ -1248,6 +1252,7 @@ body > .skiptranslate {
     right: 0;
     top: 50%;
     transform: translateY(-50%);
+    pointer-events: none;
 }
 
 .goog-te-menu-frame {
@@ -1260,16 +1265,12 @@ body > .skiptranslate {
     background: var(--background-color) !important;
     border: none !important;
 }
-
 .goog-te-menu2-item div,
-.goog-te-menu2-item:link div,
-.goog-te-menu2-item:visited div,
-.goog-te-menu2-item:active div {
+.goog-te-menu2-item:link div {
     padding: 10px 15px !important;
     font-family: 'Space Grotesk', sans-serif !important;
     color: var(--text-secondary) !important;
     background: transparent !important;
-    transition: background 0.2s ease, color 0.2s ease;
 }
 
 .goog-te-menu2-item-selected div,
