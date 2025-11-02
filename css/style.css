@@ -1154,39 +1154,28 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-.footer-badges {
+.site-status {
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap; 
+    gap: 0.5rem;
+    background-color: rgba(20, 234, 249, 0.1);
+    border: 1px solid rgba(20, 234, 249, 0.5);
+    border-radius: 99px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.8rem;
+    font-weight: 500;
 }
 
-#wcb #wcb_a {
-    border-radius: 0 .3em .3em 0;
-    border-left: 0;
-    background: #14eaf9!important;
-    color: #000000!important;
-    font-weight: 700;
-    border-color: #14eaf9!important;
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #28a745;
+    box-shadow: 0 0 6px #28a745;
 }
 
-.netlify-badge,
-#wcb.carbonbadge {
-    display: flex; 
-    align-items: center;
-}
-
-.netlify-badge img {
-    display: block; 
-    height: 28px; 
-    width: auto; 
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-}
-
-.netlify-badge img:hover {
-    opacity: 1;
+.status-text {
+    color: var(--primary-color);
 }
 
 .site-version {

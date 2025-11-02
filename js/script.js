@@ -244,34 +244,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function injectFooterMeta() {
-    const siteVersion = "1.0.1";
+    const siteVersion = "1.0.2";
     const footerBottom = document.querySelector(".footer-bottom");
 
     if (footerBottom) {
       const metaContainer = document.createElement("div");
       metaContainer.className = "footer-meta-container";
 
-      const badgesHTML = `
-        <div class="footer-badges">
-          <div class="netlify-badge">
-            <a href="https://app.netlify.com/projects/baybreeze/deploys" target="_blank" rel="noopener noreferrer">
-              <img src="https://api.netlify.com/api/v1/badges/d1d28573-4ef5-4aee-ad9d-4a3b53a73d76/deploy-status" alt="Netlify Status" />
-            </a>
-          </div>
-          <div id="wcb" class="carbonbadge"></div>
+      const customStatusHTML = `
+        <div class="site-status">
+          <span class="status-indicator"></span>
+          <span class="status-text">All Systems Operational</span>
         </div>
+        <p class="site-version">Version ${siteVersion}</p>
       `;
 
-      const versionHTML = `<p class="site-version">Version ${siteVersion}</p>`;
-
-      metaContainer.innerHTML = badgesHTML + versionHTML;
+      metaContainer.innerHTML = customStatusHTML;
       footerBottom.appendChild(metaContainer);
-
-      const carbonScript = document.createElement("script");
-      carbonScript.src =
-        "https://unpkg.com/website-carbon-badges@1.1.3/b.min.js";
-      carbonScript.defer = true;
-      document.body.appendChild(carbonScript);
     }
   }
 
