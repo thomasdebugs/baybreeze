@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bay-breeze-cache-v3';
+const CACHE_NAME = 'bay-breeze-cache-v4';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -7,6 +7,7 @@ const urlsToCache = [
   '/css/style.css',
   '/css/tools.css',
   '/js/script.js',
+  '/js/chat-bot.js', 
   '/img/Bay Breeze.webp',
   '/img/Bay Leaders.webp',
   '/img/kvk.webp',
