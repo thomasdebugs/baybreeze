@@ -244,38 +244,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function injectFooterMeta() {
-    const siteVersion = "1.0.1";
+    const siteVersion = "1.0.2";
     const footerBottom = document.querySelector(".footer-bottom");
 
     if (footerBottom) {
       const metaContainer = document.createElement("div");
       metaContainer.className = "footer-meta-container";
 
-      const badgesHTML = `
-        <div class="footer-badges">
-          <div class="netlify-badge">
-            <a href="https://app.netlify.com/sites/baybreeze/deploys" target="_blank" rel="noopener noreferrer">
-              <img 
-                src="https://img.shields.io/netlify/44326680-4df7-4a75-bd54-2da14cd95e1c?style=flat-square" 
-                alt="Netlify Status"
-                loading="lazy"
-              />
-            </a>
-          </div>
-          <div id="wcb" class="carbonbadge"></div>
+      const customStatusHTML = `
+        <div class="site-status">
+          <span class="status-indicator"></span>
+          <span class="status-text">All Systems Operational</span>
         </div>
+        <p class="site-version">Version ${siteVersion}</p>
       `;
 
-      const versionHTML = `<p class="site-version">Version ${siteVersion}</p>`;
-
-      metaContainer.innerHTML = badgesHTML + versionHTML;
+      metaContainer.innerHTML = customStatusHTML;
       footerBottom.appendChild(metaContainer);
-
-      const carbonScript = document.createElement("script");
-      carbonScript.src =
-        "https://unpkg.com/website-carbon-badges@1.1.3/b.min.js";
-      carbonScript.defer = true;
-      document.body.appendChild(carbonScript);
     }
   }
 
@@ -298,4 +283,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const measurementId = "G-Y9BW00PC8Y";
   injectGoogleAnalytics(measurementId);
   injectFooterMeta();
+
+  function injectChatBot() {
+    const chatBotScript = document.createElement("script");
+    chatBotScript.src = "js/chat-bot.js";
+    chatBotScript.defer = true;
+    document.body.appendChild(chatBotScript);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", injectChatBot);
+  } else {
+    injectChatBot();
+  }
 });
