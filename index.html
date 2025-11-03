@@ -6,15 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Bay Breeze Guild - Top Heroes</title>
 	<link rel="icon" type="image/x-icon" href="img/Bay Breeze.webp">
-
-	<!-- Meta Data for SEO & Social Sharing -->
 	<meta name="description"
 		content="An unofficial, fan-made resource for Top Heroes. Access powerful calculators, in-depth guides, and strategies created by players, for players.">
 	<meta name="author" content="Bay Breeze Guild">
 	<meta name="msapplication-TileColor" content="#14eaf9">
 	<meta name="theme-color" content="#14eaf9">
-
-	<!-- Open Graph (OG) Meta Tags -->
 	<meta property="og:title" content="Bay Breeze Guild - Tools & Resources for Top Heroes" />
 	<meta property="og:description"
 		content="Fan-made resource with powerful calculators, in-depth guides, and strategies to master the game." />
@@ -25,18 +21,167 @@
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta property="og:site_name" content="Bay Breeze Guild" />
-
-	<!-- Twitter Card Meta Tags -->
 	<meta name="twitter:title" content="Bay Breeze Guild - Tools & Resources for Top Heroes">
 	<meta name="twitter:description"
 		content="Fan-made resource with powerful calculators, in-depth guides, and strategies to master the game.">
 	<meta name="twitter:image" content="https://baybreeze.netlify.app/img/baybreezesharing.webp">
-
 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
 		rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
 	<link rel="manifest" href="manifest.json">
 	<link rel="stylesheet" href="css/style.css" />
+	<style>
+		.chat-bot-container {
+			position: fixed;
+			bottom: 20px;
+			left: 20px;
+			z-index: 1000
+		}
+
+		#chat-toggle-btn {
+			background-color: var(--primary-color, #14eaf9);
+			color: #fff;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			border: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 2rem;
+			cursor: pointer;
+			box-shadow: 0 4px 15px rgba(0, 0, 0, .2);
+			transition: transform .3s ease, background-color .3s ease
+		}
+
+		#chat-toggle-btn:hover {
+			transform: scale(1.1);
+			background-color: #18d3e0
+		}
+
+		.chat-window {
+			position: absolute;
+			bottom: 80px;
+			left: 0;
+			width: 350px;
+			max-width: 90vw;
+			height: 450px;
+			background: var(--card-color, #1a1a1a);
+			border: 1px solid var(--border-color, #333);
+			border-radius: 16px;
+			display: flex;
+			flex-direction: column;
+			overflow: hidden;
+			box-shadow: 0 5px 25px rgba(0, 0, 0, .2);
+			transform: scale(.95) translateY(10px);
+			opacity: 0;
+			visibility: hidden;
+			transition: all .3s cubic-bezier(.25, .8, .25, 1)
+		}
+
+		.chat-window.open {
+			transform: scale(1) translateY(0);
+			opacity: 1;
+			visibility: visible
+		}
+
+		.chat-header {
+			background: var(--background-color, #121212);
+			padding: 1rem;
+			border-bottom: 1px solid var(--border-color, #333);
+			text-align: center;
+			font-weight: 600
+		}
+
+		.chat-header h4 {
+			margin: 0;
+			color: var(--text-primary, #fff);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: .5rem
+		}
+
+		.chat-messages {
+			flex-grow: 1;
+			padding: 1rem;
+			overflow-y: auto;
+			display: flex;
+			flex-direction: column;
+			gap: .75rem
+		}
+
+		.chat-messages::-webkit-scrollbar {
+			width: 6px
+		}
+
+		.chat-messages::-webkit-scrollbar-thumb {
+			background: var(--border-color, #333);
+			border-radius: 3px
+		}
+
+		.chat-message {
+			padding: .6rem 1rem;
+			border-radius: 12px;
+			max-width: 80%;
+			line-height: 1.5;
+			color: var(--text-primary, #fff)
+		}
+
+		.chat-message a {
+			color: var(--primary-color, #14eaf9);
+			text-decoration: underline
+		}
+
+		.bot-message {
+			background: var(--background-color, #121212);
+			align-self: flex-start;
+			border-bottom-left-radius: 4px
+		}
+
+		.user-message {
+			background: var(--primary-color, #14eaf9);
+			color: #121212;
+			align-self: flex-end;
+			border-bottom-right-radius: 4px
+		}
+
+		.chat-input-area {
+			display: flex;
+			padding: .75rem;
+			border-top: 1px solid var(--border-color, #333);
+			background: var(--background-color, #121212)
+		}
+
+		#chat-input {
+			flex-grow: 1;
+			border: 1px solid var(--border-color, #333);
+			background: var(--card-color, #1a1a1a);
+			border-radius: 8px;
+			padding: .75rem;
+			color: var(--text-primary, #fff);
+			outline: none;
+			margin-right: .5rem
+		}
+
+		#chat-input:focus {
+			border-color: var(--primary-color, #14eaf9)
+		}
+
+		#chat-send-btn {
+			background: var(--primary-color, #14eaf9);
+			border: none;
+			color: #121212;
+			padding: .75rem 1rem;
+			border-radius: 8px;
+			cursor: pointer;
+			transition: background-color .2s ease
+		}
+
+		#chat-send-btn:hover {
+			background-color: #18d3e0
+		}
+	</style>
 </head>
 
 <body>
@@ -50,158 +195,93 @@
 			<ul class="nav-links" id="nav-menu">
 				<li><a href="index.html">Home</a></li>
 				<li class="mega-menu-container">
-					<a href="tools.html">
-						Tools <i class="ri-arrow-down-s-line"></i>
-					</a>
+					<a href="tools.html">Tools <i class="ri-arrow-down-s-line"></i></a>
 					<div class="mega-menu">
 						<div class="mega-menu-grid">
-							<a href="speedup-calc.html">
-								<i class="ri-timer-flash-line"></i> Speedups Calculator
-							</a>
-							<a href="weapon-calc.html">
-								<i class="ri-vip-diamond-line"></i> Exclusive Gear Shards
-							</a>
-							<a href="hero-shard.html">
-								<i class="ri-user-star-line"></i> Hero Shards Calculator
-							</a>
-							<a href="skill-books-calc.html">
-								<i class="ri-book-3-line"></i> Skill Books Calculator
-							</a>
-							<a href="hero-awakening.html">
-								<i class="ri-shield-star-line"></i> Hero Awakening Calculator
-							</a>
-							<a href="pet-level.html">
-								<i class="ri-bear-smile-line"></i> Pet Level Calculator
-							</a>
-							<a href="decor-calc.html">
-								<i class="ri-home-gear-line"></i> Decor Upgrading Calculator
-							</a>
-							<a href="castle-calc.html">
-								<i class="ri-building-4-line"></i> Castle Upgrading Calculator
-							</a>
-							<a href="rune-calc.html">
-								<i class="ri-magic-line"></i> Rune Upgrading Calculator
-							</a>
+							<a href="speedup-calc.html"><i class="ri-timer-flash-line"></i> Speedups Calculator</a>
+							<a href="weapon-calc.html"><i class="ri-vip-diamond-line"></i> Exclusive Gear Shards</a>
+							<a href="hero-shard.html"><i class="ri-user-star-line"></i> Hero Shards Calculator</a>
+							<a href="skill-books-calc.html"><i class="ri-book-3-line"></i> Skill Books Calculator</a>
+							<a href="hero-awakening.html"><i class="ri-shield-star-line"></i> Hero Awakening
+								Calculator</a>
+							<a href="pet-level.html"><i class="ri-bear-smile-line"></i> Pet Level Calculator</a>
+							<a href="decor-calc.html"><i class="ri-home-gear-line"></i> Decor Upgrading Calculator</a>
+							<a href="castle-calc.html"><i class="ri-building-4-line"></i> Castle Upgrading
+								Calculator</a>
+							<a href="rune-calc.html"><i class="ri-magic-line"></i> Rune Upgrading Calculator</a>
 						</div>
 					</div>
 				</li>
 				<li><a href="resources.html">Resources</a></li>
 				<li><a href="hr-report.html">Report to HR</a></li>
-
-				<div class="nav-close" id="nav-close">
-					<i class="ri-close-line"></i>
-				</div>
+				<div class="nav-close" id="nav-close"><i class="ri-close-line"></i></div>
 			</ul>
-			<a href="https://discord.gg/pXaNHAbz2E" class="cta-btn" target="_blank">
-				<span>Join Our Discord</span>
-			</a>
-
-			<div class="nav-toggle" id="nav-toggle">
-				<i class="ri-menu-line"></i>
-			</div>
+			<a href="https://discord.gg/pXaNHAbz2E" class="cta-btn" target="_blank"><span>Join Our Discord</span></a>
+			<div class="nav-toggle" id="nav-toggle"><i class="ri-menu-line"></i></div>
 		</div>
 	</nav>
-
 	<section class="hero">
 		<div class="hero-content">
 			<h1>Welcome to Bay Breeze</h1>
-			<p>
-				Your ultimate resource for mastering Top Heroes. Access powerful
-				tools, cutting-edge strategies, and a thriving community dedicated to
-				victory.
-			</p>
+			<p>Your ultimate resource for mastering Top Heroes. Access powerful tools, cutting-edge strategies, and a
+				thriving community dedicated to victory.</p>
 			<div class="hero-buttons">
-				<a href="tools.html" class="btn-primary">
-					<span>Explore Tools <i class="ri-tools-fill"></i></span>
-				</a>
-				<a href="resources.html" class="btn-secondary">
-					<i class="ri-book-open-line"></i>
-					View Strategies
-				</a>
+				<a href="tools.html" class="btn-primary"><span>Explore Tools <i class="ri-tools-fill"></i></span></a>
+				<a href="resources.html" class="btn-secondary"><i class="ri-book-open-line"></i> View Strategies</a>
 			</div>
 		</div>
-		<div class="hero-image">
-			<img src="img/Bay Leaders.webp" alt="Top Heroes Gameplay" class="hero-bg-img" />
-		</div>
+		<div class="hero-image"><img src="img/Bay Leaders.webp" alt="Top Heroes Gameplay" class="hero-bg-img" /></div>
 	</section>
-
 	<section class="intro" id="about">
 		<div class="section-header">
 			<h2>Forge Your Path to Victory</h2>
-			<p>
-				At Bay Breeze, we are more than just a guild—we are a community of
-				dedicated players who strive for excellence. We provide the tools and
-				knowledge you need to dominate the battlefield.
-			</p>
+			<p>At Bay Breeze, we are more than just a guild—we are a community of dedicated players who strive for
+				excellence. We provide the tools and knowledge you need to dominate the battlefield.</p>
 		</div>
 		<div class="intro-grid">
 			<div class="intro-card">
-				<div class="intro-icon">
-					<i class="ri-calculator-line"></i>
-				</div>
+				<div class="intro-icon"><i class="ri-calculator-line"></i></div>
 				<h3>Advanced Calculators</h3>
-				<p>
-					Optimize your progress with a suite of calculators for everything
-					from upgrades to hero shards.
-				</p>
+				<p>Optimize your progress with a suite of calculators for everything from upgrades to hero shards.</p>
 			</div>
 			<div class="intro-card">
-				<div class="intro-icon">
-					<i class="ri-lightbulb-flash-line"></i>
-				</div>
+				<div class="intro-icon"><i class="ri-lightbulb-flash-line"></i></div>
 				<h3>Winning Strategies</h3>
-				<p>
-					Gain the upper hand with in-depth guides for GAR, KvK, Ancient
-					Battlefield, and more.
-				</p>
+				<p>Gain the upper hand with in-depth guides for GAR, KvK, Ancient Battlefield, and more.</p>
 			</div>
 			<div class="intro-card">
-				<div class="intro-icon">
-					<i class="ri-group-line"></i>
-				</div>
+				<div class="intro-icon"><i class="ri-group-line"></i></div>
 				<h3>Thriving Community</h3>
-				<p>
-					Join a network of passionate players, share insights, and coordinate
-					for epic victories.
-				</p>
+				<p>Join a network of passionate players, share insights, and coordinate for epic victories.</p>
 			</div>
 		</div>
 	</section>
-
 	<section class="members" id="members">
 		<div class="section-header">
 			<h2>Guild Leadership</h2>
-			<p>
-				Can you guess who was the first ever R4 Officer of Bay Breeze? Click
-				on a leader to find out!
-			</p>
+			<p>Can you guess who was the first ever R4 Officer of Bay Breeze? Click on a leader to find out!</p>
 		</div>
-
 		<div class="leader-card-container">
 			<div class="member-card mc-razor" data-member="razor">
 				<div class="member-stats">
 					<p>Power: 52.1M</p>
 					<p>Castle: Lv. 40</p>
 					<p class="quote">"Victory in the shadows."</p>
-				</div>
-				<img src="img/rz.webp" alt="Generated avatar of Razor" class="member-img" />
+				</div><img src="img/rz.webp" alt="Generated avatar of Razor" class="member-img" />
 				<div class="member-info">
 					<h3>Razor</h3>
 					<p class="member-role">Guild Master</p>
 				</div>
 			</div>
 		</div>
-
 		<h4>R4 Officers</h4>
-
 		<div class="members-grid">
 			<div class="member-card mc-badsmoke" data-member="badsmoke">
 				<div class="member-stats">
 					<p>Power: 66.0M</p>
 					<p>Castle: Lv. 46</p>
 					<p class="quote">"No risk, no fun"</p>
-				</div>
-				<img src="img/smoke.webp" alt="Generated avatar of Badsmoke" class="member-img" />
+				</div><img src="img/smoke.webp" alt="Generated avatar of Badsmoke" class="member-img" />
 				<div class="member-info">
 					<h3>Badsmoke</h3>
 					<p class="member-role">Warlord</p>
@@ -212,8 +292,7 @@
 					<p>Power: 35.9M</p>
 					<p>Castle: Lv. 40</p>
 					<p class="quote">"I hate you."</p>
-				</div>
-				<img src="img/clari.webp" alt="Generated avatar of MClarinha" class="member-img" />
+				</div><img src="img/clari.webp" alt="Generated avatar of MClarinha" class="member-img" />
 				<div class="member-info">
 					<h3>MClarinha</h3>
 					<p class="member-role">Recruiter</p>
@@ -224,8 +303,7 @@
 					<p>Power: 34.3M</p>
 					<p>Castle: Lv. 38</p>
 					<p class="quote">"Change begins with small steps"</p>
-				</div>
-				<img src="img/sky.webp" alt="Generated avatar of sky" class="member-img" />
+				</div><img src="img/sky.webp" alt="Generated avatar of sky" class="member-img" />
 				<div class="member-info">
 					<h3>sky</h3>
 					<p class="member-role">Muse</p>
@@ -236,8 +314,7 @@
 					<p>Power: 50.4M</p>
 					<p>Castle: Lv. 43</p>
 					<p class="quote">"Order and efficiency."</p>
-				</div>
-				<img src="img/howl.webp" alt="Generated avatar of Howl Pen" class="member-img" />
+				</div><img src="img/howl.webp" alt="Generated avatar of Howl Pen" class="member-img" />
 				<div class="member-info">
 					<h3>Howl Pen</h3>
 					<p class="member-role">Butler</p>
@@ -248,8 +325,7 @@
 					<p>Power: 26.9M</p>
 					<p>Castle: Lv. 39</p>
 					<p class="quote">"Mad habibi"</p>
-				</div>
-				<img src="img/hibz.webp" alt="Generated avatar of Hibz" class="member-img" />
+				</div><img src="img/hibz.webp" alt="Generated avatar of Hibz" class="member-img" />
 				<div class="member-info">
 					<h3>Hibz</h3>
 					<p class="member-role">Officer</p>
@@ -260,8 +336,7 @@
 					<p>Power: 48.1M</p>
 					<p>Castle: Lv. 45</p>
 					<p class="quote">"No luck found"</p>
-				</div>
-				<img src="img/dead.webp" alt="Generated avatar of Dead Army" class="member-img" />
+				</div><img src="img/dead.webp" alt="Generated avatar of Dead Army" class="member-img" />
 				<div class="member-info">
 					<h3>Dead Army</h3>
 					<p class="member-role">Officer</p>
@@ -272,8 +347,7 @@
 					<p>Power: 32.2M</p>
 					<p>Castle: Lv. 40</p>
 					<p class="quote">"Truth is God"</p>
-				</div>
-				<img src="img/dollor.webp" alt="Generated avatar of Dollor" class="member-img" />
+				</div><img src="img/dollor.webp" alt="Generated avatar of Dollor" class="member-img" />
 				<div class="member-info">
 					<h3>Dollor</h3>
 					<p class="member-role">Officer</p>
@@ -284,8 +358,7 @@
 					<p>Power: 31.7M</p>
 					<p>Castle: Lv. 38</p>
 					<p class="quote">"Quietly on fire"</p>
-				</div>
-				<img src="img/lani.webp" alt="Generated avatar of Leilani" class="member-img" />
+				</div><img src="img/lani.webp" alt="Generated avatar of Leilani" class="member-img" />
 				<div class="member-info">
 					<h3>Leilani</h3>
 					<p class="member-role">Officer</p>
@@ -293,7 +366,6 @@
 			</div>
 		</div>
 	</section>
-
 	<div id="win-popup" class="popup-container">
 		<div class="popup-content">
 			<button id="close-popup" class="close-popup-btn">&times;</button>
@@ -301,93 +373,86 @@
 			<p>You won a red car!</p>
 		</div>
 	</div>
-
 	<section class="featured-tools" id="tools-preview">
 		<div class="section-header">
 			<h2>Essential Player Tools</h2>
 			<p>Streamline your gameplay with our powerful calculators</p>
 		</div>
 		<div class="tools-grid">
-			<a href="speedup-calc.html" class="tool-card">
-				<i class="ri-timer-flash-line"></i>
+			<a href="speedup-calc.html" class="tool-card"><i class="ri-timer-flash-line"></i>
 				<h4>Speedups Calculator</h4>
 			</a>
-			<a href="weapon-calc.html" class="tool-card">
-				<i class="ri-vip-diamond-line"></i>
+			<a href="weapon-calc.html" class="tool-card"><i class="ri-vip-diamond-line"></i>
 				<h4>Exclusive Gear Calculator</h4>
 			</a>
-			<a href="hero-shard.html" class="tool-card">
-				<i class="ri-user-star-line"></i>
+			<a href="hero-shard.html" class="tool-card"><i class="ri-user-star-line"></i>
 				<h4>Hero Shards Calculator</h4>
 			</a>
-			<a href="skill-books-calc.html" class="tool-card">
-				<i class="ri-book-3-line"></i>
+			<a href="skill-books-calc.html" class="tool-card"><i class="ri-book-3-line"></i>
 				<h4>Skill Books Calculator</h4>
 			</a>
-			<a href="hero-awakening.html" class="tool-card">
-				<i class="ri-shield-star-line"></i>
+			<a href="hero-awakening.html" class="tool-card"><i class="ri-shield-star-line"></i>
 				<h4>Hero Awakening Calculator</h4>
 			</a>
-			<a href="pet-level.html" class="tool-card">
-				<i class="ri-bear-smile-line"></i>
+			<a href="pet-level.html" class="tool-card"><i class="ri-bear-smile-line"></i>
 				<h4>Pet Level Calculator</h4>
 			</a>
 		</div>
-		<div class="view-all-link">
-			<a href="tools.html" class="btn-secondary">View All Tools <i class="ri-arrow-right-s-line"></i></a>
-		</div>
+		<div class="view-all-link"><a href="tools.html" class="btn-secondary">View All Tools <i
+					class="ri-arrow-right-s-line"></i></a></div>
 	</section>
-
 	<section class="featured-resources" id="resources-preview">
 		<div class="section-header">
 			<h2>Latest Strategies & Guides</h2>
 			<p>Dominate every event with our expert insights</p>
 		</div>
 		<div class="resource-grid">
-			<a href="resources.html#hero" class="resource-card">
-				<img src="img/ancientbattlefield.webp" alt="Hero Mastery" class="resource-img" />
+			<a href="resources.html#hero" class="resource-card"><img src="img/ancientbattlefield.webp"
+					alt="Hero Mastery" class="resource-img" />
 				<div class="resource-content">
 					<h3>Hero Mastery</h3>
-					<p>
-						Master your heroes with guides on factions, gear, pets, and combat strategies.
-					</p>
-					<span class="resource-link">Read Guides <i class="ri-arrow-right-line"></i></span>
+					<p>Master your heroes with guides on factions, gear, pets, and combat strategies.</p><span
+						class="resource-link">Read Guides <i class="ri-arrow-right-line"></i></span>
 				</div>
 			</a>
-			<a href="resources.html#kingdom" class="resource-card">
-				<img src="img/kvk.webp" alt="Kingdom Foundations" class="resource-img" />
+			<a href="resources.html#kingdom" class="resource-card"><img src="img/kvk.webp" alt="Kingdom Foundations"
+					class="resource-img" />
 				<div class="resource-content">
 					<h3>Kingdom Foundations</h3>
-					<p>
-						Build a powerful kingdom with guides on castle upgrades, research, and server events.
-					</p>
-					<span class="resource-link">Read Guides <i class="ri-arrow-right-line"></i></span>
+					<p>Build a powerful kingdom with guides on castle upgrades, research, and server events.</p><span
+						class="resource-link">Read Guides <i class="ri-arrow-right-line"></i></span>
 				</div>
 			</a>
-			<a href="resources.html#economy" class="resource-card">
-				<img src="img/gar.webp" alt="Economic Dominance" class="resource-img" />
+			<a href="resources.html#economy" class="resource-card"><img src="img/gar.webp" alt="Economic Dominance"
+					class="resource-img" />
 				<div class="resource-content">
 					<h3>Economic Dominance</h3>
-					<p>
-						Dominate the economy with tips for F2P players, smart spending, and resource management.
-					</p>
-					<span class="resource-link">Read Guides <i class="ri-arrow-right-line"></i></span>
+					<p>Dominate the economy with tips for F2P players, smart spending, and resource management.</p><span
+						class="resource-link">Read Guides <i class="ri-arrow-right-line"></i></span>
 				</div>
 			</a>
 		</div>
 	</section>
 
+	<div class="chat-bot-container">
+		<div class="chat-window">
+			<div class="chat-header">
+				<h4><i class="ri-sparkling-2-line"></i> Bay Breeze Helper</h4>
+			</div>
+			<div class="chat-messages"></div>
+			<div class="chat-input-area">
+				<input type="text" id="chat-input" placeholder="Ask a question..." />
+				<button id="chat-send-btn" title="Send Message"><i class="ri-send-plane-2-fill"></i></button>
+			</div>
+		</div>
+		<button id="chat-toggle-btn" title="Open Chat Helper"><i class="ri-question-answer-line"></i></button>
+	</div>
+
 	<footer>
 		<div class="footer-container">
 			<div class="footer-brand">
-				<h3>
-					<img src="img/Bay Breeze.webp" alt="Bay Breeze Logo" class="footer-logo-img" />
-					Bay Breeze
-				</h3>
-				<p>
-					Less grinding, more winning. Or at least that's the theory. No
-					refunds.
-				</p>
+				<h3><img src="img/Bay Breeze.webp" alt="Bay Breeze Logo" class="footer-logo-img" /> Bay Breeze</h3>
+				<p>Less grinding, more winning. Or at least that's the theory. No refunds.</p>
 			</div>
 			<div class="footer-links">
 				<h4>Navigation</h4>
@@ -396,9 +461,7 @@
 					<li><a href="tools.html">Tools</a></li>
 					<li><a href="resources.html">Resources</a></li>
 					<li><a href="hr-report.html">Report to HR</a></li>
-					<li>
-						<a href="https://discord.gg/pXaNHAbz2E" target="_blank">Join Us</a>
-					</li>
+					<li><a href="https://discord.gg/pXaNHAbz2E" target="_blank">Join Us</a></li>
 				</ul>
 			</div>
 			<div class="footer-links">
@@ -421,21 +484,14 @@
 		</div>
 		<div class="footer-bottom">
 			<p>Made by Rz even though they hate me 💖</p>
-			<p class="disclaimer">
-				Disclaimer: Bay Breeze is an unofficial, fan-made resource. We are not
-				affiliated with Top Heroes or its developers. This is a hobby project
-				created by players, for players.
-			</p>
+			<p class="disclaimer">Disclaimer: Bay Breeze is an unofficial, fan-made resource. We are not affiliated with
+				Top Heroes or its developers. This is a hobby project created by players, for players.</p>
 		</div>
 	</footer>
-
 	<div id="share-popup" class="share-popup" aria-hidden="true">
-		<button id="share-selection-btn" title="Share Selection">
-			<i class="ri-share-forward-fill"></i>
-			<span id="share-selection-text">Share</span>
-		</button>
+		<button id="share-selection-btn" title="Share Selection"><i class="ri-share-forward-fill"></i><span
+				id="share-selection-text">Share</span></button>
 	</div>
-
 	<script>
 		if ('serviceWorker' in navigator) {
 			window.addEventListener('load', () => {
@@ -447,8 +503,47 @@
 			});
 		}
 	</script>
-
 	<script src="js/script.js"></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			const chatToggleButton = document.getElementById("chat-toggle-btn"), chatWindow = document.querySelector(".chat-window"), messagesContainer = document.querySelector(".chat-messages"), chatInput = document.getElementById("chat-input"), chatSendButton = document.getElementById("chat-send-btn");
+			let initialMessageSent = false;
+			chatToggleButton.addEventListener("click", () => {
+				chatWindow.classList.toggle("open");
+				if (chatWindow.classList.contains("open") && !initialMessageSent) {
+					setTimeout(() => addMessage("Hello! I'm the Bay Breeze helper bot. How can I assist you? You can ask me about calculators, guides, or how to join.", "bot"), 300);
+					initialMessageSent = true;
+				}
+			});
+			const sendMessage = () => {
+				const userQuery = chatInput.value.trim();
+				if (userQuery === "") return;
+				addMessage(userQuery, "user");
+				chatInput.value = "";
+				setTimeout(() => addMessage(getBotResponse(userQuery), "bot"), 600);
+			};
+			chatSendButton.addEventListener("click", sendMessage);
+			chatInput.addEventListener("keypress", (e) => { if (e.key === "Enter") sendMessage(); });
+			const addMessage = (text, sender) => {
+				const messageElement = document.createElement("div");
+				messageElement.classList.add("chat-message", `${sender}-message`);
+				messageElement.innerHTML = text;
+				messagesContainer.appendChild(messageElement);
+				messagesContainer.scrollTop = messagesContainer.scrollHeight;
+			};
+			const getBotResponse = (query) => {
+				const q = query.toLowerCase();
+				if (q.includes("hello") || q.includes("hi") || q.includes("hey")) return "Hello there! How can I help you navigate the Bay Breeze resources?";
+				if (q.includes("calc") || q.includes("speedup") || q.includes("gear") || q.includes("shard") || q.includes("rune") || q.includes("skill book") || q.includes("pet") || q.includes("castle")) return `It sounds like you're looking for our calculators! We have a full suite of them on our <a href="/tools.html">Tools page</a>.`;
+				if (q.includes("guide") || q.includes("strategy") || q.includes("f2p") || q.includes("resource") || q.includes("morale") || q.includes("relic") || q.includes("event")) return `Looking for strategies? Our <a href="/resources.html">Resources page</a> has in-depth guides on Hero Mastery, Kingdom Foundations, and more.`;
+				if (q.includes("join") || q.includes("discord") || q.includes("guild")) return "We'd love to have you! You can <a href='https://discord.gg/pXaNHAbz2E' target='_blank'>Join Our Discord</a> to become part of the Bay Breeze community.";
+				if (q.includes("leader") || q.includes("razor") || q.includes("officer") || q.includes("badsmoke")) return `Our Guild Master is Razor. You can find a full list of our R4 Officers on the <a href="/index.html#members">Home page</a>.`;
+				if (q.includes("sky") || q.includes("first r4") || q.includes("first officer")) return "That's a fun bit of guild history! If you click on 'sky' on the homepage, you might find a special surprise. 😉";
+				if (q.includes("bug") || q.includes("report") || q.includes("hr") || q.includes("suggestion") || q.includes("idea")) return `If you've found a bug or have a suggestion, please use the <a href="/hr-report.html">Report to HR form</a>. We appreciate your feedback!`;
+				return "I'm not sure how to answer that. Try asking about 'calculators', 'guides', 'joining the guild', or how to 'report a bug'.";
+			};
+		});
+	</script>
 </body>
 
 </html>

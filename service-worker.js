@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bay-breeze-cache-v5';
+const CACHE_NAME = 'bay-breeze-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
